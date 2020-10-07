@@ -31,16 +31,18 @@ def message_new_member(message):
 
 @bot.message_handler(commands=['result'])
 def result(message):
-    if message.chat.type == "group" or message.chat.type == "supergroup":
-        if bot.get_chat_member(message.chat.id, message.from_user.id).status == "administrator" or bot.get_chat_member(message.chat.id, message.from_user.id).status == "creator":
-            try:
-		db.create(message.chat.id)
-                if len(db.results(message.chat.id)) > 0:
-                    bot.send_message(message.chat.id, text=db.results(message.chat.id))
-                else:
-                    bot.send_message(message.chat.id, text="Ma'lumoat mavjud emas!")
-            except:
-                bot.send_message(message.chat.id, "Xatolik yuz berdi!\nKod: 3")
+	if message.chat.type == "group" or message.chat.type == "supergroup":
+		if bot.get_chat_member(message.chat.id, message.from_user.id).status == "administrator" or bot.get_chat_member(message.chat.id, message.from_user.id).status == "creator":
+		try:
+			db.create(message.chat.id)
+                	if len(db.results(message.chat.id)) > 0:
+                    		bot.send_message(message.chat.id, text=db.results(message.chat.id))
+                	else:
+                    		bot.send_message(message.chat.id, text="Ma'lumoat mavjud emas!")
+            	except:
+                	bot.send_message(message.chat.id, "Xatolik yuz berdi!\nKod: 3")
+			
+			
 @bot.message_handler(content_types=['left_chat_member'])
 def message_left_member(message):
 	try:
