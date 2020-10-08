@@ -1,7 +1,7 @@
 import sqli
 import telebot
 
-bot = telebot.TeleBot("1249683899:AAHhysctjhbFB61j4pngsyPusRsRDbwkw48")
+bot = telebot.TeleBot("Token")
 db = sqli.Sql('databeys.db')
 
 @bot.message_handler(commands=['start'])
